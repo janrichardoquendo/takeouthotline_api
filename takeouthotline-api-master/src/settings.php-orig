@@ -1,0 +1,35 @@
+<?php
+return [
+    'settings' => [
+        'displayErrorDetails' => true, // set to false in production
+        'addContentLengthHeader' => false, // Allow the web server to send the content-length header
+
+        // Renderer settings
+        'renderer' => [
+            'template_path' => __DIR__ . '/../templates/',
+        ],
+
+        // Monolog settings
+        'logger' => [
+            'name' => 'slim-app',
+            'path' => __DIR__ . '/../logs/app.log',
+            'level' => \Monolog\Logger::DEBUG,
+        ],
+        //Database Settings
+      //  'mysql' => [
+      //      'driver' => 'pdo_mysql',
+      //      'user' => 'joene',
+      //      'password' => 'CheRambil27',
+      //      'dbname' => 'takeout',
+      //      "host"=>"joenefloresca.xyz"
+      //    ],
+        'mysql' => [
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => 'root',
+            'dbname' => 'web90db1',
+            "host"=>"localhost",
+            "port" => 8889
+        ],
+    ],
+];

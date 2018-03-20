@@ -1,0 +1,51 @@
+{
+    "name": "slim/slim-skeleton",
+    "description": "A Slim Framework skeleton application for rapid development",
+    "keywords": ["microframework", "rest", "router", "psr7"],
+    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Lockhart",
+            "email": "info@joshlockhart.com",
+            "homepage": "http://www.joshlockhart.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17",
+        "doctrine/orm": "2.4.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+     "autoload":{
+        "psr-4":{
+            "TakeOutHotline\\":"src\\classes",
+            "TakeOutHotline\\Entities\\":"src\\entities",
+            "TakeOutHotline\\Resources\\":"src\\resources",
+            "TakeOutHotline\\Documents\\":"src\\documents",
+            "TakeOutHotline\\CouchDocuments\\":"src\\couch_documents",
+            "TakeOutHotline\\Mongo\\Resources\\":"src\\mongo_resources",
+            "TakeOutHotline\\Workers\\":"src\\workers",
+            "TakeOutHotline\\Exceptions\\":"src\\exceptions",
+            "TakeOutHotline\\Solr\\Resources\\":"src\\solr_resources",
+            "TakeOutHotline\\Tests\\":"src\\tests",
+            "TakeOutHotline\\States\\Recruitment\\":"src\\states\\recruitment",
+            "TakeOutHotline\\Interfaces\\":"src\\interfaces",
+            "TakeOutHotline\\Components\\":"src\\components"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+	"scripts": {
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit"
+	}
+
+}

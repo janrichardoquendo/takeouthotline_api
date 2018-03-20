@@ -1,0 +1,61 @@
+<?php
+namespace TakeOutHotline;
+/**
+ * Created by PhpStorm.
+ * User: joenefloresca
+ * Date: 28/02/2017
+ * Time: 3:18 PM
+ */
+
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\Common\Collections\ArrayCollection;
+
+class AbstractResource
+{
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $entityManager = null;
+
+    /**
+     * @return \Doctrine\ORM\EntityManager
+     */
+    public function getEntityManager()
+    {
+        if ($this->entityManager=== null) {
+            $this->entityManager = $this->createEntityManager();
+        }
+
+        return $this->entityManager;
+    }
+
+    /**
+     * @return EntityManager
+     */
+    public function createEntityManager()
+    {
+        $cacheDir = null;
+        //$cacheDir = '/srv/api/src/entities';
+//        if (!is_dir($cacheDir)) {
+//            mkdir($cacheDir);
+//        }
+        $paths = [BASE_DIR.'/../src/entities'];
+        $isDevMode = false;
+        // Instantiate the app
+        $settings = require BASE_DIR . '/../src/settings.php';
+        $dbParams = $settings["settings"]["mysql"];
+
+        $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, $cacheDir);
+
+        return EntityManager::create($dbParams, $config);
+    }
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager($entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+}
